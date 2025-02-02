@@ -1,8 +1,12 @@
 import { Outlet } from "react-router-dom"
-
+import {ToastContainer} from 'react-toastify'
+import UserContextProvider from "./context/UserContextProvider"
 const App = () => {
   return (
-    <Outlet/>
+    <UserContextProvider>
+      <ToastContainer />
+      <Outlet/>
+    </UserContextProvider>
   )
 }
 
