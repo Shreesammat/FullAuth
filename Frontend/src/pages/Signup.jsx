@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { toast, Bounce } from "react-toastify";
+import UserContext from "../context/UserContext";
 
 const Signup = () => {
     
@@ -15,6 +16,7 @@ const Signup = () => {
 function MyForm() {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({});
+  const {setUser} = useContext(UserContext);
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -70,8 +72,9 @@ function MyForm() {
       }
 
       const data = await response.json();
-
+      console.log("data is ", data)
       if (data.success) {
+        setUser(data.user)
         toast.success('Signup successful!', {
           position: "top-right",
           autoClose: 3000,

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 const UserContextProvider = ({children}) => {
     const [user, setUser] = React.useState(null);
+    
     return (
         <UserContext.Provider value={{user, setUser}}>
         {children}
@@ -12,7 +13,7 @@ const UserContextProvider = ({children}) => {
 }
 
 UserContextProvider.propTypes = {
-    children: PropTypes.node.Required
+    children: PropTypes.node.isRequired
 }
 
-export default UserContextProvider; rtfgv c
+export default UserContextProvider;
